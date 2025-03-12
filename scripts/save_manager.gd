@@ -1,11 +1,12 @@
 extends Node
-# TODO: VALIDAR SE FUNCIONA PQ FOI O GPT QUE FEZ
+
 class_name SaveManager
 
 const SAVE_PATH := "user://save_data.json"
 var data_list: Array[GameData] = []
 
 # Método para salvar os dados no arquivo JSON
+#TODO ta replicando registros na alteracao
 func save_data():
 	var json_array: Array = []
 	for item in data_list:
@@ -16,7 +17,7 @@ func save_data():
 	file.close()
 
 # Método para carregar os dados do arquivo JSON
-func load_data():
+func load_data() -> Array[GameData]:
 	if not FileAccess.file_exists(SAVE_PATH):
 		save_data() #inicializa se nao existe
 
@@ -32,11 +33,13 @@ func load_data():
 			data_list.clear()
 			for entry in data_array:
 				data_list.append(GameData.from_dict(entry))
+	
+	return data_list
 
 # Criar um novo item e adicioná-lo à lista
-func cadastrar(id: int, titulo: String, review: String):
-	#TODO tem que fazer o controle da numeracao do id
-	data_list.append(GameData.new(id, titulo, review))
+func cadastrar(titulo: String, review: String):
+	var primary_key = data_list.size() + 1 if data_list.size() != 0 else 1 
+	data_list.append(GameData.new(primary_key, titulo, review))
 	save_data()
 
 # Ler um item pelo ID

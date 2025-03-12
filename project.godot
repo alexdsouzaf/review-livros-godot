@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 saveManager="*res://scripts/save_manager.gd"
+Interfaces="*res://scripts/interfaces.gd"
 
 [display]
 

@@ -3,10 +3,6 @@ class_name ComponenteCadastroReview
 
 #TODO PRECISO IMPLEMENTAR TODA A LOGICA DE CRUD
 
-@export var inclusao : bool = false
-@export var edicao : bool = false
-@export var visualizacao : bool = false
-
 @export var button_editar : Button
 @export var button_gravar : Button
 @export var button_cancelar : Button
@@ -30,6 +26,13 @@ enum modosEnum {
 
 func _ready() -> void:
 	_atualizar_visibilidades()
+	_carregar_registro()
+
+func _carregar_registro():
+	if registro != null:
+		input_review.text = registro.review
+		button_titulo.text = registro.titulo
+		input_titulo.text = registro.titulo
 
 func _atualizar_visibilidades():
 	match enumerado_modo:
@@ -79,28 +82,33 @@ func _on_button_pressed() -> void:
 	box_container.visible = !box_container.visible
 	button_editar.visible = !button_editar.visible
 
-# a acao de cancelar deve: ou destruir o componente na inclusao, ou sair do modo de alteracao na listagem
 func _on_button_cancelar_pressed() -> void:
-	if inclusao:
+	if enumerado_modo == modosEnum.inclusao:
 		queue_free()
 	else:
 		enumerado_modo = modosEnum.visualizacao
 		_atualizar_visibilidades()
 
-# TODO: destruir o componente na listagem e remover do save
 func _on_button_remover_pressed() -> void:
-	saveManager.remover(0)
-	
+	saveManager.remover(registro.id)
+	Interfaces.acao_consultar.emit()
 	queue_free()
 
-# TODO: destruir o componente na inclusao e salvar
 func _on_button_gravar_pressed() -> void:
-	if inclusao:
-		saveManager.cadastrar(0,input_titulo.text,input_review.text)
+	print("gravar")
+	if registro == null:
+		saveManager.cadastrar(input_titulo.text,input_review.text)
+	else:
+		saveManager.alterar(registro.id,input_titulo.text,input_review.text)
+	
+	if enumerado_modo == modosEnum.inclusao:
+		#Interfaces.acao_consultar.emit()
 		queue_free()
 	else:
 		enumerado_modo = modosEnum.visualizacao
 		_atualizar_visibilidades()
+	
+	Interfaces.acao_consultar.emit()
 
 func _on_button_editar_pressed() -> void:
 	enumerado_modo = modosEnum.alteracao

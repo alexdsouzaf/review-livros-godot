@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj02eaxaeidcf"]
+[gd_scene load_steps=7 format=3 uid="uid://bj02eaxaeidcf"]
 
 [ext_resource type="Script" uid="uid://sut3qxve7hxq" path="res://cenas/main.gd" id="1_bhvw8"]
 [ext_resource type="PackedScene" uid="uid://csiq61g0klp64" path="res://componentes/panel_container_navbar.tscn" id="1_mtgg2"]
 [ext_resource type="Theme" uid="uid://by65oaqmve2kl" path="res://temas/panel_container_navbar.tres" id="2_4fhxt"]
 [ext_resource type="PackedScene" uid="uid://c30an7ilfwhy8" path="res://componentes/panel_container_acoes.tscn" id="3_4fhxt"]
 [ext_resource type="PackedScene" uid="uid://b74wsqlrcpa3d" path="res://componentes/panel_container_listagem.tscn" id="4_b30p5"]
+[ext_resource type="PackedScene" uid="uid://cmadeuuxya443" path="res://componentes/v_box_container-review-cadastro.tscn" id="5_5wwvk"]
 
-[node name="main" type="Control" node_paths=PackedStringArray("panel_inclusao", "container_listagem")]
+[node name="main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,8 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bhvw8")
-panel_inclusao = NodePath("PanelContainer/VBoxContainer/PanelContainer-inclusao")
-container_listagem = NodePath("PanelContainer/VBoxContainer/VBoxContainer-listagem")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -49,3 +48,7 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="VBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer-listagem" instance=ExtResource("5_5wwvk")]
+layout_mode = 2
+enumerado_modo = 2

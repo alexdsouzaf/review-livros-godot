@@ -22,7 +22,7 @@ layout_mode = 2
 
 [node name="LabelTitulo" type="LineEdit" parent="PanelContainer"]
 layout_mode = 2
-text = "titulo..."
+placeholder_text = "titulo..."
 
 [node name="Button" type="Button" parent="PanelContainer"]
 visible = false
