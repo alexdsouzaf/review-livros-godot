@@ -36,4 +36,5 @@ text = "Limpar"
 layout_mode = 2
 text = "adicionar"
 
+[connection signal="pressed" from="HBoxContainer/btnPesquisar" to="." method="_on_btn_pesquisar_pressed"]
 [connection signal="pressed" from="HBoxContainer/btnAdicionar" to="." method="_on_btn_adicionar_pressed"]

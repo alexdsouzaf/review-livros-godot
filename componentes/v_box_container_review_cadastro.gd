@@ -1,7 +1,6 @@
 extends VBoxContainer
 class_name ComponenteCadastroReview
 
-#TODO PRECISO IMPLEMENTAR TODA A LOGICA DE CRUD
 
 @export var button_editar : Button
 @export var button_gravar : Button
@@ -56,6 +55,7 @@ func _modo_inclusao():
 
 func _modo_alteracao():
 	button_gravar.visible = true
+	button_editar.visible = false
 	button_cancelar.visible = true
 	button_remover.visible = true
 	input_titulo.visible = true

@@ -11,8 +11,12 @@ func _ready() -> void:
 
 
 func _consultar():
-	print("consultar")
+	
 	var resultados = saveManager.load_data()
+	
+	var elementos = container_listagem.get_children()
+	for elemento in elementos:
+		container_listagem.remove_child(elemento)
 	
 	for item in resultados:
 		var instancia = componente_cadastro.instantiate() as ComponenteCadastroReview

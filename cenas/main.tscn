@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bhvw8")
 panel_inclusao = NodePath("PanelContainer/VBoxContainer/PanelContainer-inclusao")
-container_listagem = NodePath("PanelContainer/VBoxContainer/VBoxContainer-listagem")
+container_listagem = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer-listagem")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -45,7 +45,14 @@ custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer-listagem" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(750, 400)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="VBoxContainer-listagem" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(750, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
