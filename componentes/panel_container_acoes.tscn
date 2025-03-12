@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c30an7ilfwhy8"]
+
+[ext_resource type="LabelSettings" uid="uid://dqvrxfsgu6jy2" path="res://temas/label-navbar.tres" id="1_2unu3"]
+[ext_resource type="Script" uid="uid://cjegvrecfurci" path="res://componentes/panel_container_acoes.gd" id="1_8bc5n"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 740.0
+offset_bottom = 74.0
+script = ExtResource("1_8bc5n")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Adicione uma nova resenha ou procure por alguma :)"
+label_settings = ExtResource("1_2unu3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextEdit" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+placeholder_text = "Busque por um título...."
+
+[node name="btnPesquisar" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Pesquise por um título"
+text = "Pesquisar"
+
+[node name="btnLimparCampo" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Limpar"
+
+[node name="btnAdicionar" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "adicionar"
+
+[connection signal="pressed" from="HBoxContainer/btnAdicionar" to="." method="_on_btn_adicionar_pressed"]

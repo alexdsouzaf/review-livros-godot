@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://csiq61g0klp64"]
+
+[ext_resource type="Theme" uid="uid://beab2tgjg1s0i" path="res://temas/marginContainer-theme.tres" id="1_3yojd"]
+[ext_resource type="Texture2D" uid="uid://yoilb5y3ghi4" path="res://book.svg" id="2_lkoxi"]
+[ext_resource type="LabelSettings" uid="uid://dqvrxfsgu6jy2" path="res://temas/label-navbar.tres" id="3_774b6"]
+
+[node name="HBoxContainer-navbar" type="HBoxContainer"]
+offset_right = 1152.0
+offset_bottom = 105.0
+size_flags_vertical = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_3yojd")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_lkoxi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_3yojd")
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Minhas Resenhas de Livros"
+label_settings = ExtResource("3_774b6")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_3yojd")
+
+[node name="Label2" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+text = "Sobre"
+label_settings = ExtResource("3_774b6")
+
+[node name="PanelContainer-navbar" type="PanelContainer" parent="."]
+layout_mode = 2

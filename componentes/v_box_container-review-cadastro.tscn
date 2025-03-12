@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmadeuuxya443"]
+
+[ext_resource type="Script" uid="uid://blyqktwha1s34" path="res://componentes/v_box_container_review_cadastro.gd" id="1_frwiq"]
+
+[node name="VBoxContainer" type="VBoxContainer" node_paths=PackedStringArray("button_editar", "button_gravar", "button_cancelar", "button_remover", "input_titulo", "input_review", "button_titulo", "box_container")]
+script = ExtResource("1_frwiq")
+button_editar = NodePath("BoxContainer2/ButtonEditar")
+button_gravar = NodePath("BoxContainer2/ButtonGravar")
+button_cancelar = NodePath("BoxContainer2/ButtonCancelar")
+button_remover = NodePath("BoxContainer2/ButtonRemover")
+input_titulo = NodePath("PanelContainer/LabelTitulo")
+input_review = NodePath("TextEdit")
+button_titulo = NodePath("PanelContainer/Button")
+box_container = NodePath("BoxContainer2")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelTitulo" type="LineEdit" parent="PanelContainer"]
+layout_mode = 2
+text = "titulo..."
+
+[node name="Button" type="Button" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+text = "titulo..."
+alignment = 0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Review..."
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+visible = false
+layout_mode = 2
+alignment = 2
+
+[node name="ButtonEditar" type="Button" parent="BoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Editar"
+
+[node name="ButtonGravar" type="Button" parent="BoxContainer2"]
+visible = false
+layout_mode = 2
+text = "Gravar"
+
+[node name="ButtonCancelar" type="Button" parent="BoxContainer2"]
+visible = false
+layout_mode = 2
+text = "Cancelar"
+
+[node name="ButtonRemover" type="Button" parent="BoxContainer2"]
+visible = false
+layout_mode = 2
+text = "Remover"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[connection signal="pressed" from="PanelContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BoxContainer2/ButtonEditar" to="." method="_on_button_editar_pressed"]
+[connection signal="pressed" from="BoxContainer2/ButtonGravar" to="." method="_on_button_gravar_pressed"]
+[connection signal="pressed" from="BoxContainer2/ButtonCancelar" to="." method="_on_button_cancelar_pressed"]
+[connection signal="pressed" from="BoxContainer2/ButtonRemover" to="." method="_on_button_remover_pressed"]
