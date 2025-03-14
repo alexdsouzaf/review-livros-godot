@@ -17,7 +17,7 @@ func save_data():
 	file.close()
 
 # Método para carregar os dados do arquivo JSON
-func load_data() -> Array[GameData]:
+func load_data(pFiltroTexto:String) -> Array[GameData]:
 	if not FileAccess.file_exists(SAVE_PATH):
 		save_data() #inicializa se nao existe
 
@@ -34,7 +34,18 @@ func load_data() -> Array[GameData]:
 			for entry in data_array:
 				data_list.append(GameData.from_dict(entry))
 	
-	return data_list
+	if pFiltroTexto == "":
+		return data_list
+	
+	var retorno = data_list.filter(func(item): 
+		return pFiltroTexto.to_lower() in item.titulo.to_lower()
+	)
+	
+	#conversao da constante Array para um Array com tipo
+	var array_of_game_data: Array[GameData]
+	array_of_game_data.assign(retorno)
+	
+	return array_of_game_data
 
 # Criar um novo item e adicioná-lo à lista
 func cadastrar(titulo: String, review: String):

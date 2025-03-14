@@ -5,14 +5,14 @@ var componente_cadastro = preload("res://componentes/v_box_container-review-cada
 @export var container_listagem : VBoxContainer
 
 func _ready() -> void:
-	_consultar()
+	_consultar("")
 	Interfaces.acao_adicionar.connect(self._adicionar)
 	Interfaces.acao_consultar.connect(self._consultar)
 
 
-func _consultar():
+func _consultar(pFiltroTexto:String):
 	
-	var resultados = saveManager.load_data()
+	var resultados = saveManager.load_data(pFiltroTexto)
 	
 	var elementos = container_listagem.get_children()
 	for elemento in elementos:

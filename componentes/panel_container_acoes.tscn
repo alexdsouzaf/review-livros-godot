@@ -3,10 +3,11 @@
 [ext_resource type="LabelSettings" uid="uid://dqvrxfsgu6jy2" path="res://temas/label-navbar.tres" id="1_2unu3"]
 [ext_resource type="Script" uid="uid://cjegvrecfurci" path="res://componentes/panel_container_acoes.gd" id="1_8bc5n"]
 
-[node name="VBoxContainer" type="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" node_paths=PackedStringArray("input")]
 offset_right = 740.0
 offset_bottom = 74.0
 script = ExtResource("1_8bc5n")
+input = NodePath("HBoxContainer/TextEdit")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -37,4 +38,5 @@ layout_mode = 2
 text = "adicionar"
 
 [connection signal="pressed" from="HBoxContainer/btnPesquisar" to="." method="_on_btn_pesquisar_pressed"]
+[connection signal="pressed" from="HBoxContainer/btnLimparCampo" to="." method="_on_btn_limpar_campo_pressed"]
 [connection signal="pressed" from="HBoxContainer/btnAdicionar" to="." method="_on_btn_adicionar_pressed"]
